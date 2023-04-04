@@ -6,20 +6,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserHomeController {
-	@RequestMapping("/usr/home/main")
-	@ResponseBody
-	public String showMain() {
-		return "안녕하세요";
+	private int count;
+	
+	public UserHomeController() {
+		count = 0;
 	}
-	@RequestMapping("/usr/home/main2")
+	@RequestMapping("/usr/home/getCount")
 	@ResponseBody
-	public String showMain2() {
-		return "반갑습니다.";
+	public int getCount() {
+		return count++;
 	}
-	@RequestMapping("/usr/home/main3")
+	@RequestMapping("/usr/home/doSetCount")
 	@ResponseBody
-	public String showMain3() {
-		return "또 만나요";
+	public String doSetCount(int count) {
+		this.count = count;
+		return "Count값이  "+ this.count + "으로 초기화되었습니다.";
 	}
 }
  
