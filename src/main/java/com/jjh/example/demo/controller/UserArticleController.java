@@ -3,15 +3,19 @@ package com.jjh.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jjh.example.demo.service.ArticleService;
 import com.jjh.example.demo.vo.Article;
 
 @Controller
 public class UserArticleController {
 	//인스턴스 변수 시작
+	@Autowired
+	private ArticleService articleService;
 	private int articlesLastId;
 	private List<Article> articles;
 	//인스턴스 변수 끝
