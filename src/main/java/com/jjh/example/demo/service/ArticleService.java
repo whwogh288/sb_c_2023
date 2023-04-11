@@ -2,7 +2,6 @@ package com.jjh.example.demo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jjh.example.demo.repository.ArticleRepository;
@@ -14,7 +13,6 @@ public class ArticleService {
 	
 	public ArticleService(ArticleRepository articleRepository) {
 		this.articleRepository = articleRepository;
-		articleRepository.makeTestData();
 	}
 	
 	
