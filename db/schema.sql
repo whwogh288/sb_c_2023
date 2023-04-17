@@ -41,7 +41,7 @@ CREATE TABLE `member` (
     authLevel SMALLINT(2) UNSIGNED DEFAULT 3 COMMENT '권한레벨(3=일반, 7=관리자)',
     `name` CHAR(20) NOT NULL,
     nickname CHAR(20) NOT NULL,
-    cellphonNo CHAR(20) NOT NULL,
+    cellphoneNo CHAR(20) NOT NULL,
     email CHAR(50) NOT NULL,
     delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '탈퇴여부(0=탈퇴전, 1=탈퇴)',
     delDate DATETIME COMMENT '탈퇴날짜'
@@ -56,7 +56,7 @@ loginPw = 'admin',
 authLevel = 7,
 `name` = '관리자',
 nickname = '관리자',
-cellphonNo = '010-1111-2222',
+cellphoneNo = '010-1111-2222',
 email = 'xxxx@naver.com';
 
 # 회원, 테스트 데이터 생성(일반 회원)
@@ -67,7 +67,7 @@ loginId = 'user1',
 loginPw = 'user1',
 `name` = '사용자1',
 nickname = '사용자1',
-cellphonNo = '010-2222-3333',
+cellphoneNo = '010-2222-3333',
 email = 'xxxx@naver.com';
 
 INSERT INTO `member`
@@ -77,7 +77,7 @@ loginId = 'user2',
 loginPw = 'user2',
 `name` = '사용자2',
 nickname = '사용자2',
-cellphonNo = '010-3333-4444',
+cellphoneNo = '010-3333-4444',
 email = 'xxxx@naver.com';
 
-SELECT * FROM `member`
+SELECT * FROM `member`;
