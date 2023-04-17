@@ -18,6 +18,30 @@ public class UserMemberController {
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
 	public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
+		if ( loginId == null ) {
+			return "loginId(을)를 입력해주세요";
+		}
+		
+		if ( loginPw == null ) {
+			return "PassWord(을)를 입력해주세요";
+		}
+		
+		if ( name == null ) {
+			return "이름(을)를 입력해주세요";
+		}
+		
+		if ( nickname == null ) {
+			return "nickname(을)를 입력해주세요";
+		}
+		
+		if ( cellphoneNo == null ) {
+			return "휴대폰 번호(을)를 입력해주세요";
+		}
+		
+		if ( email == null ) {
+			return "e-mail(을)를 입력해주세요";
+		}
+		
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
 		if ( id == -1 ) {
