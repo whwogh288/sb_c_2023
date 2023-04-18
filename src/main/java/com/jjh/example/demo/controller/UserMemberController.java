@@ -46,11 +46,23 @@ public class UserMemberController {
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
 		if ( id == -1 ) {
-			return "해당 아이디는 이미 사용중입니다.";
+			return Ut.f("해당 아이디(%s)는 이미 사용중입니다.", loginId);
 		}
 		
 		if ( id == -2 ) {
-			return "해당 이름과 이메일(은)는 이미 사용중입니다.";
+			return Ut.f("해당 이름(%s)은 이미 사용중입니다.", name);
+		}
+		
+		if ( id == -3 ) {
+			return Ut.f("해당 닉네임(%s)은 이미 사용중입니다.", nickname);
+		}
+		
+		if ( id == -4 ) {
+			return Ut.f("해당 휴대폰번호(%s)는 이미 등록되어 있습니다.", cellphoneNo);
+		}
+		
+		if ( id == -5 ) {
+			return Ut.f("해당 email(%s)은 이미 사용중입니다.", email);
 		}
 		
 		Member member = memberService.getMemberById(id);
