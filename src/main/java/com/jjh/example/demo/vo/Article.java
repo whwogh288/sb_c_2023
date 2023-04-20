@@ -8,9 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Article{
-	public int id;
-	public String title;
-	public String body;
+	private int id;
+	private String regDate;
+	private String updateDate;
+	private String title;
+	private String body;
 	
 	
 }
