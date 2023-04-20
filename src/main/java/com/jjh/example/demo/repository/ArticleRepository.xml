@@ -6,10 +6,12 @@
 	
 	<insert id="writeArticle">
 		INSERT INTO article 
-		SET regDate = NOW(), 
-		updateDate = NOW(), 
+		SET memberId = #{memberId},
 		title = #{title}, 
-		body= #{body}
+		body= #{body},
+		regDate = NOW(), 
+		updateDate = NOW()
+		
 	</insert>
 	
 	<select id="getArticle" resultType="Article">
