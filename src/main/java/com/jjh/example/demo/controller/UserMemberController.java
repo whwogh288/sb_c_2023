@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.jjh.example.demo.service.MemberService;
 import com.jjh.example.demo.utill.Ut;
 import com.jjh.example.demo.vo.Member;
+import com.jjh.example.demo.vo.ResultData;
 
 @Controller
 public class UserMemberController {
@@ -18,55 +19,39 @@ public class UserMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
+	public ResultData doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email) {
 		if (Ut.empty(loginId)) {
-			return "loginId(을)를 입력해주세요";
+			return ResultData.from("F-1", "loginId(을)를 입력해주세요");
 		}
 		
 		if (Ut.empty(loginPw)) {
-			return "PassWord(을)를 입력해주세요";
+			return ResultData.from("F-2", "loginPw(을)를 입력해주세요");
 		}
 		
 		if (Ut.empty(name)) {
-			return "이름(을)를 입력해주세요";
+			return ResultData.from("F-3", "name(을)를 입력해주세요");
 		}
 		
 		if (Ut.empty(nickname)) {
-			return "nickname(을)를 입력해주세요";
+			return ResultData.from("F-4", "nickname(을)를 입력해주세요");
 		}
 		
 		if (Ut.empty(cellphoneNo)) {
-			return "휴대폰 번호(을)를 입력해주세요";
+			return ResultData.from("F-5", "cellphoneNo(을)를 입력해주세요");
 		}
 		
 		if (Ut.empty(email)) {
-			return "e-mail(을)를 입력해주세요";
+			return ResultData.from("F-6", "email(을)를 입력해주세요");
 		}
 		
-		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
+		ResultData joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 		
-		if ( id == -1 ) {
-			return Ut.f("해당 아이디(%s)는 이미 사용중입니다.", loginId);
+		if ( joinRd.isFail() ) {
+			return joinRd;
 		}
 		
-		if ( id == -2 ) {
-			return Ut.f("해당 이름(%s)은 이미 사용중입니다.", name);
-		}
+		Member member = memberService.getMemberById((int)joinRd.getData1());
 		
-		if ( id == -3 ) {
-			return Ut.f("해당 닉네임(%s)은 이미 사용중입니다.", nickname);
-		}
-		
-		if ( id == -4 ) {
-			return Ut.f("해당 휴대폰번호(%s)는 이미 등록되어 있습니다.", cellphoneNo);
-		}
-		
-		if ( id == -5 ) {
-			return Ut.f("해당 email(%s)은 이미 사용중입니다.", email);
-		}
-		
-		Member member = memberService.getMemberById(id);
-		
-		return member;
+		return ResultData.newData(joinRd, member);
 	}
 }
