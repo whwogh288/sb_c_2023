@@ -9,6 +9,8 @@ import com.jjh.example.demo.utill.Ut;
 import com.jjh.example.demo.vo.Member;
 import com.jjh.example.demo.vo.ResultData;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserMemberController {
 	private MemberService memberService;
@@ -54,5 +56,31 @@ public class UserMemberController {
 		Member member = memberService.getMemberById((int) joinRd.getData1());
 
 		return ResultData.newData(joinRd, member);
+	}
+	
+	@RequestMapping("/usr/member/doLogin")
+	@ResponseBody
+	public ResultData doLogin(HttpSession httpSession, String loginId, String loginPw) {
+		if (Ut.empty(loginId)) {
+			return ResultData.from("F-1", "loginId(을)를 입력해주세요");
+		}
+
+		if (Ut.empty(loginPw)) {
+			return ResultData.from("F-2", "loginPw(을)를 입력해주세요");
+		}
+
+		Member member = memberService.getMemberByLoginId(loginId);
+
+		if (member == null) {
+			return ResultData.from("F-3", "존재하지 않는 정보입니다.");
+		}
+
+		if (member.getLoginPw().equals(loginPw) == false) {
+			return ResultData.from("F-4", "비밀번호가 일치하지 않습니다.");
+		}
+		
+		httpSession.setAttribute("loginedMemberId", member.getId());
+		
+		return ResultData.from("S-1", Ut.f("%s님 환영합니다.", member.getNickname()));
 	}
 }
