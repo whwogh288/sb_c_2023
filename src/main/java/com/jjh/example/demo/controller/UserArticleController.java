@@ -48,7 +48,7 @@ public class UserArticleController {
 
 		Article article = articleService.getArticle(id);
 		
-		return ResultData.newData(writeArticleRd, article);
+		return ResultData.newData(writeArticleRd, "article", article);
 	}
 
 	@RequestMapping("/usr/article/getArticles")
@@ -56,7 +56,7 @@ public class UserArticleController {
 	public ResultData getArticles() {
 		List<Article> articles = articleService.getArticles();
 		
-		return ResultData.from("S-1", "게시물 리스트입니다.", articles);
+		return ResultData.from("S-1", "게시물 리스트입니다.", "articles", articles);
 	}
 
 	@RequestMapping("/usr/article/getArticle")
@@ -65,10 +65,10 @@ public class UserArticleController {
 		Article article = articleService.getArticle(id);
 
 		if (article == null) {
-			return ResultData.from("F-1", Ut.f("%d번 게시물이 존재하지 않습니다.", id), null);
+			return ResultData.from("F-1", Ut.f("%d번 게시물이 존재하지 않습니다.", id), "article",  null);
 		}
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id), article);
+		return ResultData.from("S-1", Ut.f("%d번 게시물입니다.", id), "article", article);
 	}
 
 	@RequestMapping("/usr/article/doDelete")
@@ -98,7 +98,7 @@ public class UserArticleController {
 
 		articleService.deleteArticle(id);
 
-		return ResultData.from("S-1", Ut.f("%d번 게시물을 삭제하였습니다.", id), id);
+		return ResultData.from("S-1", Ut.f("%d번 게시물을 삭제하였습니다.", id), "id", id);
 	}
 
 	@RequestMapping("/usr/article/doModify")
