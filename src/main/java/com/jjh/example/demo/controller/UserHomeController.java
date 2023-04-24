@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserHomeController {
 	@RequestMapping("/usr/home/main")
-	@ResponseBody
-	public String Main() {
-		return "Hello World";
+	public String showMain() {
+		return "/usr/home/main";
+	}
+	
+	@RequestMapping("/")
+	public String showRppt() {
+		return "redirect:/usr/home/main";
 	}
 }
