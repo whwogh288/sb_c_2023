@@ -13,3 +13,7 @@ spring:
     password: gozldgo12
 mybatis:
   type-aliases-package: com.jjh.example.demo.vo
+custom:
+  logging:
+    dir: log
+    level: debug
