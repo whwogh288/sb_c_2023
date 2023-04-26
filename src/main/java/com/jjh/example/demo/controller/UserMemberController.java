@@ -1,5 +1,7 @@
 package com.jjh.example.demo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -8,8 +10,6 @@ import com.jjh.example.demo.service.MemberService;
 import com.jjh.example.demo.utill.Ut;
 import com.jjh.example.demo.vo.Member;
 import com.jjh.example.demo.vo.ResultData;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserMemberController {
