@@ -40,12 +40,6 @@
 		WHERE id = #{id}
 	</update>
 	
-	<select id="getArticles" resultType="Article">
-		SELECT * 
-		FROM article 
-		ORDER BY id DESC
-	</select>
-	
 	<select id="getLastInsertId" resultType="int">
 		SELECT LAST_INSERT_ID()
 	</select>

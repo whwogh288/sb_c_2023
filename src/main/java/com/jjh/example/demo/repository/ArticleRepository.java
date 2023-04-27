@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
 import com.jjh.example.demo.vo.Article;
 
 @Mapper
@@ -17,6 +19,14 @@ public interface ArticleRepository {
 
 	public void modifyArticle(@Param("id") int id, @Param("title") String title, @Param("body") String body);
 
+	@Select("""
+			SELECT A.*,
+			M.nickname AS extra_writerName
+			FROM article AS A
+			LEFT JOIN member AS M
+			ON A.memberId = M.id
+			ORDER BY A.id DESC
+				""")
 	public List<Article> getArticles();
 
 	public int getLastInsertId();

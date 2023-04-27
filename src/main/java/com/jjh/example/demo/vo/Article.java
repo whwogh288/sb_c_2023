@@ -15,4 +15,5 @@ public class Article{
 	private String regDate;
 	private String updateDate;
 	
+	private String extra_writerName;
 }
