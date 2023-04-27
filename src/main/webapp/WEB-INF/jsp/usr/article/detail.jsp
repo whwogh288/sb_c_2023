@@ -49,7 +49,7 @@
           <tr>
           
             <th>작성자</th>
-            <td>${article.memberId}</td>
+            <td>${article.extra_writerName}</td>
           </tr>
         </tbody>
       </table>

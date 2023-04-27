@@ -14,12 +14,6 @@
 		
 	</insert>
 	
-	<select id="getArticle" resultType="Article">
-		SELECT * 
-		FROM article 
-		WHERE id = #{id}	
-	</select>
-	
 	<delete id="deleteArticle">
 		DELETE 
 		FROM article 
