@@ -16,4 +16,5 @@ public class Article{
 	private String updateDate;
 	
 	private String extra_writerName;
+	private boolean extra_actorCanDelete;
 }
