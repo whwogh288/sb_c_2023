@@ -38,7 +38,9 @@
           </c:forEach>
         </tbody>
       </table>
-
+    </div>
+    <div class="btn">
+      <a class="btn-text-link" href="../article/doAdd?id=${article.id}">글쓰기</a>
     </div>
   </div>
 </section>
