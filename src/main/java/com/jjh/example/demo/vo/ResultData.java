@@ -1,7 +1,9 @@
 package com.jjh.example.demo.vo;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class ResultData {
 	// S-1 
 	// F-1
@@ -13,11 +15,6 @@ public class ResultData {
 	private String data1Name;
 	@Getter
 	private Object data1;
-	
-	
-	private ResultData() {
-		
-	}
 	
 	public static ResultData from(String resultCode, String msg) {
 		return from(resultCode, msg, null, null);
